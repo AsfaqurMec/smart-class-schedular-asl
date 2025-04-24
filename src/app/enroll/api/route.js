@@ -17,7 +17,7 @@ export const POST = async (request) => {
    // Return the created user data along with the success message
    return NextResponse.json(newUser);
   } catch (error) {
-    console.log(error);
+   // console.log(error);
     
     return NextResponse.json(
       { message: "Something Went Wrong", error },

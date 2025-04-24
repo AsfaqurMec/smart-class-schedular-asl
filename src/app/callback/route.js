@@ -30,7 +30,7 @@ export async function GET(req) {
 
         return NextResponse.redirect(`${myUrl}/success`, 303); // Redirect to the homepage
     } catch (error) {
-        console.log(error);
+       // console.log(error);
         return NextResponse.json({ message: "Something went wrong" });
     }
 }

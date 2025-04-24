@@ -104,7 +104,7 @@ const page = ({ }) => {
 
       const router = useRouter();
       const { data: session, status } = useSession();
-   console.log(session);
+  // console.log(session);
        
     const { user } = useUser(); // Access user data from context
 
@@ -140,11 +140,11 @@ const page = ({ }) => {
 
   }, [params.subject]);
 
-  console.log(latest);
+ // console.log(latest);
   
 
   const classes = latest.filter(item => item._id === params.id);
-  console.log(params.id);
+//  console.log(params.id);
   
 //console.log(classes);
 

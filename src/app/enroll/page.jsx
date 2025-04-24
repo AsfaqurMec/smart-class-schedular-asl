@@ -29,7 +29,7 @@ const SignUpPage = () => {
   const [imageUrl, setImageUrl] = useState(null);
 
   const handleDebug = () => {
-    console.log('Widget opened');
+   // console.log('Widget opened');
   };
 
 
@@ -65,7 +65,7 @@ const SignUpPage = () => {
         const data = await res.json();
         setMessage('Upload Successfully');
         setImagePath(data.filePath); 
-        console.log(imagePath);
+        //console.log(imagePath);
         // Use the file path from the server response
       } else {
         const error = await res.json();
@@ -153,7 +153,7 @@ const SignUpPage = () => {
         router.push(data.url);
       }
     } catch (error) {
-      console.log(error);
+     // console.log(error);
       alert("Something went wrong");
     }
   }

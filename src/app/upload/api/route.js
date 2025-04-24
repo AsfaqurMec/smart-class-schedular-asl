@@ -23,7 +23,7 @@ export async function POST(req) {
     const formData = await req.formData(); // Parse the form data from the request
 
     const file = formData.get('image'); // Get the uploaded file (the 'image' field)
-console.log(file);
+//console.log(file);
 
     if (!file) {
       return NextResponse.json({ error: 'No file uploaded' }, { status: 400 });
@@ -35,7 +35,7 @@ console.log(file);
 
     // Return a dynamic file serving path
     const filePath = `/uploads/${file.name}`;
-    console.log(filePath);
+   // console.log(filePath);
     
     return NextResponse.json({ filePath }, { status: 200 }); // Return the file path
   } catch (error) {

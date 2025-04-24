@@ -6,13 +6,11 @@ import { useUser } from "../../../context/UserContext";
 import toast from "react-hot-toast";
 import axios from "axios";
 
-
 const ITEMS_PER_PAGE = 10;
 
 const Page = () => {
-
-    const session = useSession();
-    const { user } = useUser();
+  const session = useSession();
+  const { user } = useUser();
 
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
@@ -23,28 +21,34 @@ const Page = () => {
   const [topic, setTopic] = useState('');
   const [course, setCourse] = useState('');
   const [error, setError] = useState('');
-
   const [latest, setLatest] = useState([]);
-    useEffect(() => {
-        const getData = async () => {
-          const { data } = await axios.get(
-            ` http://localhost:3000/allCourse`)
-          
-          setLatest(data.service)
-         
-        }
-        getData();
-    
-      }, [])
 
+  useEffect(() => {
+    const getData = async () => {
+      const { data } = await axios.get("http://localhost:3000/allCourse");
+      setLatest(data.service);
+    };
+    getData();
+  }, []);
 
   const fetchData = async (date = "") => {
     try {
-      const url = date ? `http://localhost:3000/allSchedule?day=${date}` : "http://localhost:3000/allSchedule";
+      const url = date
+        ? `http://localhost:3000/allSchedule?day=${date}`
+        : "http://localhost:3000/allSchedule";
       const res = await fetch(url);
-
       const raw = await res.json();
-      setData(raw.service || []);
+
+      const today = new Date();
+
+      const filtered = (raw.service || [])
+        .filter((item) => {
+          const itemDate = new Date(item.day);
+          return itemDate >= new Date(today.toDateString());
+        })
+        .sort((a, b) => new Date(a.day) - new Date(b.day));
+
+      setData(filtered);
     } catch (error) {
       console.error("Fetch error:", error);
     }
@@ -90,20 +94,15 @@ const Page = () => {
       });
 
       const data = await res.json();
-      if (res.ok){
-        toast.success("Schedule added successfully!")
-         
+      if (res.ok) {
+        toast.success("Schedule added successfully!");
+        fetchData(); // refresh list
       }
-      // if(res.message == 'User Exists'){
-      //   toast.error('You have already given your availiyy')
-      // }
-      
     } catch (err) {
       setError(err.message);
-      toast.error(`Error: ${err.message}`)
+      toast.error(`Error: ${err.message}`);
     }
   };
-
 
   const handleFilterChange = (e) => {
     const selected = e.target.value;
@@ -128,100 +127,91 @@ const Page = () => {
     <div className="p-6 w-full backdrop-blur-sm bg-[#ffffff96] ">
       <h1 className="text-3xl font-bold mb-6">Mentor's Dashboard</h1>
 
-      {/* Date Input */}
+      {/* Add Schedule Form */}
       <div className="w-full mx-auto mt-10 px-6 py-4 backdrop-blur-sm bg-[#ffffff96] border-2 shadow-lg rounded-2xl space-y-4 mb-10">
-      <h2 className="text-5xl font-semibold text-center mb-8">Add Schedule</h2>
+        <h2 className="text-5xl font-semibold text-center mb-8">Add Schedule</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4 flex flex-col lg:flex-row gap-3 justify-center lg:items-center">
-        <div>
-          <label className="block font-medium mb-1">Select a Date</label>
+        <form onSubmit={handleSubmit} className="space-y-4 flex flex-col lg:flex-row gap-3 justify-center lg:items-center">
+          <div>
+            <label className="block font-medium mb-1">Select a Date</label>
+            <input
+              type="date"
+              value={selectedDate}
+              onChange={(e) => setSelectedDate(e.target.value)}
+              className="w-full border rounded-md px-3 py-2"
+            />
+          </div>
 
-          <input
-            type="date"
-            value={selectedDate}
-            onChange={(e) => setSelectedDate(e.target.value)}
-            className="w-full border rounded-md px-3 py-2"
-          />
+          <div>
+            <label className="block font-medium mb-1">Start Time</label>
+            <input
+              type="time"
+              value={startTime}
+              onChange={(e) => setStartTime(e.target.value)}
+              className="w-full border rounded-md px-3 py-2"
+            />
+          </div>
 
-        </div>
+          <div>
+            <label className="block font-medium mb-1">End Time</label>
+            <input
+              type="time"
+              value={endTime}
+              onChange={(e) => setEndTime(e.target.value)}
+              className="w-full border rounded-md px-3 py-2"
+            />
+          </div>
 
-        <div>
-          <label className="block font-medium mb-1">Start Time</label>
-          <input
-            type="time"
-            value={startTime}
-            onChange={(e) => setStartTime(e.target.value)}
-            className="w-full border rounded-md px-3 py-2"
-          />
-        </div>
+          <div>
+            <label className="block font-medium mb-1">Topic</label>
+            <input
+              type="text"
+              value={topic}
+              placeholder="Enter topic"
+              onChange={(e) => setTopic(e.target.value)}
+              className="w-full border rounded-md px-3 py-2 text-black"
+            />
+          </div>
 
-        <div>
-          <label className="block font-medium mb-1">End Time</label>
-          <input
-            type="time"
-            value={endTime}
-            onChange={(e) => setEndTime(e.target.value)}
-            className="w-full border rounded-md px-3 py-2"
-          />
-        </div>
+          <div>
+            <label className="block font-medium mb-1">Course</label>
+            <select
+              value={course}
+              onChange={(e) => setCourse(e.target.value)}
+              className="w-full border rounded-md px-3 py-2"
+            >
+              <option>Enter Course</option>
+              {latest.map((day) => (
+                <option key={day._id} value={day.title}>{day.title}</option>
+              ))}
+            </select>
+          </div>
 
-        <div>
-          <label className="block font-medium mb-1">Topic</label>
-          <input
-            type="text"
-            value={topic}
-            placeholder="Enter topic"
-            onChange={(e) => setTopic(e.target.value)}
-            className="w-full border rounded-md px-3 py-2 text-black"
-          />
-        </div>
+          {error && <p className="text-red-500">{error}</p>}
 
-        <div>
-          <label className="block font-medium mb-1">Course</label>
+          <button
+            type="submit"
+            className="bg-blue-600 text-white px-4 py-2 text-lg rounded-md hover:bg-blue-700 transition w-40 h-11 lg:mt-4"
+          >
+            Add Schedule
+          </button>
+        </form>
+      </div>
 
-          <select
-          value={course}
-          onChange={(e) => setCourse(e.target.value)}
-          className="w-full border rounded-md px-3 py-2"
-        >  
-          <option>Enter Course</option>
-          {latest.map((day) => (
-            <option key={day._id} value={day.title}>{day.title}</option>
-          ))}
-        </select>
-         {/* <input
-            type="text"
-            value={course}
-            onChange={(e) => setCourse(e.target.value)}
-            className="w-full border rounded-md px-3 py-2"
-          /> */}
-        </div>
-
-        {error && <p className="text-red-500">{error}</p>}
-
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 text-lg rounded-md hover:bg-blue-700 transition w-40 h-11 lg:mt-4"
-        >
-          Add Schedule
-        </button>
-      </form>
-    </div>
-
-      {/* Table */}
+      {/* Schedule Table */}
       <div className="overflow-x-auto bg-white shadow rounded-xl p-4">
         <div className="flex justify-between items-center">
-        <h1 className=" text-lg">📋 Member Submissions</h1>
-        <div className="mb-4 bg-[#e6cbac] p-3 rounded-sm border-2">
-        <label className="text-xl font-medium mr-4">Select Date:</label>
-        <input
-          type="date"
-          value={filterDate}
-          onChange={handleFilterChange}
-          className="border p-1 rounded bg-white"
-        />
-      </div>
-      </div>
+          <h1 className=" text-lg">📋 Member Submissions</h1>
+          <div className="mb-4 bg-[#e6cbac] p-3 rounded-sm border-2">
+            <label className="text-xl font-medium mr-4">Select Date:</label>
+            <input
+              type="date"
+              value={filterDate}
+              onChange={handleFilterChange}
+              className="border p-1 rounded bg-white"
+            />
+          </div>
+        </div>
         <table className="table-auto w-full text-left border-collapse">
           <thead>
             <tr className="bg-gray-100">
@@ -247,7 +237,7 @@ const Page = () => {
           </tbody>
         </table>
 
-        {/* Pagination Controls */}
+        {/* Pagination */}
         <div className="flex justify-between items-center mt-4">
           <button
             className="px-4 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
@@ -275,6 +265,286 @@ const Page = () => {
 };
 
 export default Page;
+
+
+
+// "use client";
+// import React, { useEffect, useState } from "react";
+// import { format } from "date-fns";
+// import { useSession } from "next-auth/react";
+// import { useUser } from "../../../context/UserContext";
+// import toast from "react-hot-toast";
+// import axios from "axios";
+
+
+// const ITEMS_PER_PAGE = 10;
+
+// const Page = () => {
+
+//     const session = useSession();
+//     const { user } = useUser();
+
+//   const [data, setData] = useState([]);
+//   const [currentPage, setCurrentPage] = useState(1);
+//   const [filterDate, setFilterDate] = useState("");
+//   const [selectedDate, setSelectedDate] = useState('');
+//   const [startTime, setStartTime] = useState('');
+//   const [endTime, setEndTime] = useState('');
+//   const [topic, setTopic] = useState('');
+//   const [course, setCourse] = useState('');
+//   const [error, setError] = useState('');
+
+//   const [latest, setLatest] = useState([]);
+//     useEffect(() => {
+//         const getData = async () => {
+//           const { data } = await axios.get(
+//             ` http://localhost:3000/allCourse`)
+          
+//           setLatest(data.service)
+         
+//         }
+//         getData();
+    
+//       }, [])
+
+
+//   const fetchData = async (date = "") => {
+//     try {
+//       const url = date ? `http://localhost:3000/allSchedule?day=${date}` : "http://localhost:3000/allSchedule";
+//       const res = await fetch(url);
+
+//       const raw = await res.json();
+//       setData(raw.service || []);
+//     } catch (error) {
+//       console.error("Fetch error:", error);
+//     }
+//   };
+
+//   useEffect(() => {
+//     fetchData();
+//   }, []);
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     setError('');
+
+//     if (!selectedDate || !startTime || !endTime) {
+//       setError('All fields are required.');
+//       return;
+//     }
+
+//     const [startHour, startMin] = startTime.split(':').map(Number);
+//     const [endHour, endMin] = endTime.split(':').map(Number);
+//     const start = startHour + startMin / 60;
+//     const end = endHour + endMin / 60;
+
+//     if (end - start < 2) {
+//       setError('Time difference must be at least 5 hours.');
+//       return;
+//     }
+
+//     const slot = {
+//       email: session?.data?.user?.email,
+//       day: selectedDate,
+//       startTime: startTime,
+//       endTime: endTime,
+//       topic: topic,
+//       course: course,
+//     };
+
+//     try {
+//       const res = await fetch('http://localhost:3000/addSchedule/', {
+//         method: 'POST',
+//         headers: { 'Content-Type': 'application/json' },
+//         body: JSON.stringify(slot),
+//       });
+
+//       const data = await res.json();
+//       if (res.ok){
+//         toast.success("Schedule added successfully!")
+         
+//       }
+//       // if(res.message == 'User Exists'){
+//       //   toast.error('You have already given your availiyy')
+//       // }
+      
+//     } catch (err) {
+//       setError(err.message);
+//       toast.error(`Error: ${err.message}`)
+//     }
+//   };
+
+
+//   const handleFilterChange = (e) => {
+//     const selected = e.target.value;
+//     setFilterDate(selected);
+//     setCurrentPage(1);
+//     fetchData(selected);
+//   };
+
+//   const totalPages = Math.ceil(data.length / ITEMS_PER_PAGE);
+//   const paginatedData = data.slice(
+//     (currentPage - 1) * ITEMS_PER_PAGE,
+//     currentPage * ITEMS_PER_PAGE
+//   );
+
+//   const handlePageChange = (page) => {
+//     if (page >= 1 && page <= totalPages) {
+//       setCurrentPage(page);
+//     }
+//   };
+
+//   return (
+//     <div className="p-6 w-full backdrop-blur-sm bg-[#ffffff96] ">
+//       <h1 className="text-3xl font-bold mb-6">Mentor's Dashboard</h1>
+
+//       {/* Date Input */}
+//       <div className="w-full mx-auto mt-10 px-6 py-4 backdrop-blur-sm bg-[#ffffff96] border-2 shadow-lg rounded-2xl space-y-4 mb-10">
+//       <h2 className="text-5xl font-semibold text-center mb-8">Add Schedule</h2>
+
+//       <form onSubmit={handleSubmit} className="space-y-4 flex flex-col lg:flex-row gap-3 justify-center lg:items-center">
+//         <div>
+//           <label className="block font-medium mb-1">Select a Date</label>
+
+//           <input
+//             type="date"
+//             value={selectedDate}
+//             onChange={(e) => setSelectedDate(e.target.value)}
+//             className="w-full border rounded-md px-3 py-2"
+//           />
+
+//         </div>
+
+//         <div>
+//           <label className="block font-medium mb-1">Start Time</label>
+//           <input
+//             type="time"
+//             value={startTime}
+//             onChange={(e) => setStartTime(e.target.value)}
+//             className="w-full border rounded-md px-3 py-2"
+//           />
+//         </div>
+
+//         <div>
+//           <label className="block font-medium mb-1">End Time</label>
+//           <input
+//             type="time"
+//             value={endTime}
+//             onChange={(e) => setEndTime(e.target.value)}
+//             className="w-full border rounded-md px-3 py-2"
+//           />
+//         </div>
+
+//         <div>
+//           <label className="block font-medium mb-1">Topic</label>
+//           <input
+//             type="text"
+//             value={topic}
+//             placeholder="Enter topic"
+//             onChange={(e) => setTopic(e.target.value)}
+//             className="w-full border rounded-md px-3 py-2 text-black"
+//           />
+//         </div>
+
+//         <div>
+//           <label className="block font-medium mb-1">Course</label>
+
+//           <select
+//           value={course}
+//           onChange={(e) => setCourse(e.target.value)}
+//           className="w-full border rounded-md px-3 py-2"
+//         >  
+//           <option>Enter Course</option>
+//           {latest.map((day) => (
+//             <option key={day._id} value={day.title}>{day.title}</option>
+//           ))}
+//         </select>
+//          {/* <input
+//             type="text"
+//             value={course}
+//             onChange={(e) => setCourse(e.target.value)}
+//             className="w-full border rounded-md px-3 py-2"
+//           /> */}
+//         </div>
+
+//         {error && <p className="text-red-500">{error}</p>}
+
+//         <button
+//           type="submit"
+//           className="bg-blue-600 text-white px-4 py-2 text-lg rounded-md hover:bg-blue-700 transition w-40 h-11 lg:mt-4"
+//         >
+//           Add Schedule
+//         </button>
+//       </form>
+//     </div>
+
+//       {/* Table */}
+//       <div className="overflow-x-auto bg-white shadow rounded-xl p-4">
+//         <div className="flex justify-between items-center">
+//         <h1 className=" text-lg">📋 Member Submissions</h1>
+//         <div className="mb-4 bg-[#e6cbac] p-3 rounded-sm border-2">
+//         <label className="text-xl font-medium mr-4">Select Date:</label>
+//         <input
+//           type="date"
+//           value={filterDate}
+//           onChange={handleFilterChange}
+//           className="border p-1 rounded bg-white"
+//         />
+//       </div>
+//       </div>
+//         <table className="table-auto w-full text-left border-collapse">
+//           <thead>
+//             <tr className="bg-gray-100">
+//               <th className="p-2">Email</th>
+//               <th className="p-2">Day</th>
+//               <th className="p-2">Start</th>
+//               <th className="p-2">End</th>
+//             </tr>
+//           </thead>
+//           <tbody>
+//             {paginatedData.map((entry, i) => (
+//               <tr key={i} className="border-t">
+//                 <td className="p-2">{entry.email}</td>
+//                 <td className="p-2">{format(new Date(entry.day), "yyyy-MM-dd")}</td>
+//                 <td className="p-2">
+//                   {format(new Date(`2000-01-01T${entry.startTime}`), "h:mm a")}
+//                 </td>
+//                 <td className="p-2">
+//                   {format(new Date(`2000-01-01T${entry.endTime}`), "h:mm a")}
+//                 </td>
+//               </tr>
+//             ))}
+//           </tbody>
+//         </table>
+
+//         {/* Pagination Controls */}
+//         <div className="flex justify-between items-center mt-4">
+//           <button
+//             className="px-4 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+//             onClick={() => handlePageChange(currentPage - 1)}
+//             disabled={currentPage === 1}
+//           >
+//             ⬅️ Prev
+//           </button>
+
+//           <div className="text-sm text-gray-700">
+//             Page {currentPage} of {totalPages}
+//           </div>
+
+//           <button
+//             className="px-4 py-1 bg-gray-200 rounded hover:bg-gray-300 disabled:opacity-50"
+//             onClick={() => handlePageChange(currentPage + 1)}
+//             disabled={currentPage === totalPages}
+//           >
+//             Next ➡️
+//           </button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Page;
 
 
 

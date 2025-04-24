@@ -148,7 +148,7 @@ const page = ({ params }) => {
 
       const router = useRouter();
       const { data: session, status } = useSession();
-      console.log(session);
+     // console.log(session);
    //console.log(session);
    
     const { user } = useUser(); // Access user data from context

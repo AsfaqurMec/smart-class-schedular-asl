@@ -1,14 +1,14 @@
-import { connectDB } from "../../../../lib/connectDB"; // Import MongoDB connection
+import { connectDB } from "../../../lib/connectDB"; // Import MongoDB connection
  // Import User model
 
 export async function POST(req) {
   
   
   try {
-    const { email, selectedDay, selectedCourse } = await req.json();
-   // console.log(email,selectedCourse,selectedDay);
+    const {email, course} = await req.json();
+    //console.log("data",email, course);
     
-    if (!email || !selectedDay || !selectedCourse) {
+    if (!email) {
       return new Response(JSON.stringify({ message: "Email and new role are required" }), { status: 400 });
     }
      
@@ -16,7 +16,7 @@ export async function POST(req) {
     const db = await connectDB()
     const userCollection = db.collection('users')
     // Find user by email
-    const user = await userCollection.findOne({ email });
+    const user = await userCollection.findOne({email });
 
     if (!user) {
       
@@ -25,7 +25,7 @@ export async function POST(req) {
     }
 
     // Store the new password directly (Not Secure)
-    const updatedUser = await userCollection.updateOne({ email }, { $set: { role: selectedDay, discipline: selectedCourse } });
+    const updatedUser = await userCollection.updateOne({ email }, { $set: { role: 'mentor', discipline: course?.subject } });
     if (updatedUser.modifiedCount === 0) {
         return new Response(JSON.stringify({ message: "User not found or role unchanged" }), { status: 404 });
       }
@@ -35,3 +35,4 @@ export async function POST(req) {
     return new Response(JSON.stringify({ message: "Failed to update user role" }), { status: 500 });
   }
 }
+

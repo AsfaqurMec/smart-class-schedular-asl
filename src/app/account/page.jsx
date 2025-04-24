@@ -283,7 +283,7 @@ const Page = () => {
               </Link>
             </li>
           )}
-          {session?.data?.user?.role === "mentor" && (
+          {session?.data?.user?.role === "mentor" || "admin" && (
             <li className="mb-4">
               <Link href={"/schedule"}>
                 <button className="flex items-center text-gray-600 hover:text-orange-500">

@@ -11,7 +11,7 @@ export const POST = async (request) => {
  
    return NextResponse.json(newCart);
   } catch (error) {
-    console.log(error);
+    //console.log(error);
     
     return NextResponse.json(
       { message: "Something Went Wrong", error },

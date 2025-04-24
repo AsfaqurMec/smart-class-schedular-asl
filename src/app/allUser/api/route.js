@@ -11,7 +11,7 @@ export const GET = async () => {
 
         // Log the entire response before sending
         const response = { service };
-        console.log("API Response:", response);
+       // console.log("API Response:", response);
 
         return NextResponse.json(response);
     } catch (error) {

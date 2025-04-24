@@ -32,7 +32,7 @@ export async function POST(req) {
         }
 
         const createPaymentResponse = await createPayment(bkashConfig, paymentDetails)
-        console.log(createPaymentResponse);
+       // console.log(createPaymentResponse);
 
 
         if (createPaymentResponse.statusCode !== "0000") {
@@ -42,7 +42,7 @@ export async function POST(req) {
 
         return NextResponse.json({ message: "Payment Success", url: createPaymentResponse.bkashURL });
     } catch (error) {
-        console.log(error);
+      //  console.log(error);
         return NextResponse.json({ message: "Something went wrong" });
     }
 }
