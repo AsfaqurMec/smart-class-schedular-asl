@@ -25,7 +25,7 @@ const Page = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get("http://localhost:3000/allCourse");
+      const { data } = await axios.get("https://schedular-asl.vercel.app/allCourse");
       setLatest(data.service);
     };
     getData();
@@ -34,8 +34,8 @@ const Page = () => {
   const fetchData = async (date = "") => {
     try {
       const url = date
-        ? `http://localhost:3000/allSchedule?day=${date}`
-        : "http://localhost:3000/allSchedule";
+        ? `https://schedular-asl.vercel.app/allSchedule?day=${date}`
+        : "https://schedular-asl.vercel.app/allSchedule";
       const res = await fetch(url);
       const raw = await res.json();
 
@@ -87,7 +87,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/addSchedule/', {
+      const res = await fetch('https://schedular-asl.vercel.app/addSchedule/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(slot),
@@ -298,7 +298,7 @@ export default Page;
 //     useEffect(() => {
 //         const getData = async () => {
 //           const { data } = await axios.get(
-//             ` http://localhost:3000/allCourse`)
+//             ` https://schedular-asl.vercel.app/allCourse`)
           
 //           setLatest(data.service)
          
@@ -310,7 +310,7 @@ export default Page;
 
 //   const fetchData = async (date = "") => {
 //     try {
-//       const url = date ? `http://localhost:3000/allSchedule?day=${date}` : "http://localhost:3000/allSchedule";
+//       const url = date ? `https://schedular-asl.vercel.app/allSchedule?day=${date}` : "https://schedular-asl.vercel.app/allSchedule";
 //       const res = await fetch(url);
 
 //       const raw = await res.json();
@@ -353,7 +353,7 @@ export default Page;
 //     };
 
 //     try {
-//       const res = await fetch('http://localhost:3000/addSchedule/', {
+//       const res = await fetch('https://schedular-asl.vercel.app/addSchedule/', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(slot),
@@ -580,7 +580,7 @@ export default Page;
 
 //   useEffect(() => {
 //     const fetchData = async () => {
-//       const res = await fetch('http://localhost:3000/allSchedule/');
+//       const res = await fetch('https://schedular-asl.vercel.app/allSchedule/');
 //       const raw = await res.json();
 //       setData(raw.service);
 //       const best = getBestOverlappingTimeSlots(raw.service);
@@ -738,7 +738,7 @@ export default Page;
 
 //   useEffect(() => {
 //     const fetchData = async () => {
-//       const res = await fetch('http://localhost:3000/allSchedule/');
+//       const res = await fetch('https://schedular-asl.vercel.app/allSchedule/');
 //       const raw = await res.json();
 //       setData(raw.service);
 //       const best = getBestOverlappingTimeSlots(raw.service);

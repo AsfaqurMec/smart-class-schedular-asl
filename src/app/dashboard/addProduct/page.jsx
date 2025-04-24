@@ -29,7 +29,7 @@ const [imageUrl1, setImageUrl1] = useState('');
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` http://localhost:3000/dashboard/users/api`
+        ` https://schedular-asl.vercel.app/dashboard/users/api`
       )
       
       setLatest(data.service)
@@ -79,7 +79,7 @@ const handleUploadComplete = (result) => {
     e.preventDefault();
    // console.log("Product Details:", product);
 
-    const resp = await fetch('http://localhost:3000/dashboard/addProduct/api', {
+    const resp = await fetch('https://schedular-asl.vercel.app/dashboard/addProduct/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const handleUploadComplete = (result) => {
         course: product
      }
 
-      const resp = await fetch('http://localhost:3000/updateUser/', {
+      const resp = await fetch('https://schedular-asl.vercel.app/updateUser/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

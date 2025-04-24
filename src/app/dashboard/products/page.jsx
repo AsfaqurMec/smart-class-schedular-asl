@@ -16,7 +16,7 @@ const page = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` https://electro-brown.vercel.app/dashboard/products/api`
+        ` https://schedular-asl.vercel.app/allCourse/`
       )
       
       setLatest(data.service)
@@ -74,8 +74,8 @@ const page = () => {
                 
                 <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Image</th>
                 <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Title</th>
-                <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Stock</th>
-                <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Price</th>
+                <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Subjct</th>
+                
                 
                 
                 <th className="px-[5px] md:px-3 text-stone-950 text-lg font-bold">Action</th>
@@ -87,18 +87,18 @@ const page = () => {
         <tbody>
             {
              paginatedData.map(user => 
-                <tr key={user?.image}>
+                <tr key={user?._id}>
                 
-                <td className="px-[5px] md:px-3 font-bold text-lg"><img className="w-12 h-12" src={user?.image1} alt="" /></td>
+                <td className="px-[5px] md:px-3 font-bold text-lg"><img className="w-12 h-12" src={user?.image} alt="" /></td>
                 <td className="px-[5px] md:px-3 font-bold text-lg">{user?.title}</td>
-                <td className="px-[5px] md:px-3 font-bold text-lg">{user?.quantity}</td>
-                <td className="px-[5px] md:px-3 font-bold text-lg">৳{user?.price}</td>
+                <td className="px-[5px] md:px-3 font-bold text-lg">{user?.subject}</td>
+                
                
                 
                 
                 <td className="flex  gap-2 flex-row">
-                  <button className='btn-success bg-green-600 px-3 py-2 rounded-md text-white'>Edit</button>
-                  <button className='btn-info bg-red-600 px-3 py-2 rounded-md text-white'>Delete</button>
+                  <button className='btn-success bg-green-500 px-3 py-2 rounded-md text-white'>Edit</button>
+                  <button className='btn-info bg-red-500 px-3 py-2 rounded-md text-white'>Delete</button>
                 
                  {/* { user.status == 'active' ?
                    

@@ -46,11 +46,11 @@ const Page = () => {
                         
                           <form  onSubmit={handleLogin} className="card-body gap-1">
                           <div className='w-full flex flex-col justify-center items-center gap-2'>
-                          <h1 className='font-semibold text-teal-900 text-3xl'>Login</h1>
+                          <h1 className='font-semibold text-teal-900 text-5xl'>Login</h1>
                           
                               </div> 
 
-                  <div className="form-control mt-10">
+                  <div className="form-control mt-5">
                   <label className="text-xl text-[#d38303]" htmlFor="email">Email</label> <br />
                   <div className="flex items-center bg-gray-100 rounded-md mb-4 px-3 text-lg">
                   <HiOutlineUser className="text-gray-500" />  
@@ -86,7 +86,7 @@ const Page = () => {
                <div className="form-control mt-2 p-0">
                <button
                  type="submit"
-                 className="w-full btn bg-red-500 text-white py-3 rounded-md hover:bg-red-800 transition mb-4"
+                 className="w-full btn bg-red-800 text-white py-3 rounded-md hover:bg-red-900 transition mb-4"
                >
                  Sign In
                </button>

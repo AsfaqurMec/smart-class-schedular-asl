@@ -26,7 +26,7 @@
 
 //   useEffect(() => {
 //     const getData = async () => {
-//       const { data } = await axios.get(`http://localhost:3000/myclass/api?subject=${params.subject}`);
+//       const { data } = await axios.get(`https://schedular-asl.vercel.app/myclass/api?subject=${params.subject}`);
 //       setLatest(data.service);
 //       setLoading(false);
 //     };
@@ -171,7 +171,7 @@ const page = ({ params }) => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` http://localhost:3000/myclass/api?subject=${params?.subject}`
+        ` https://schedular-asl.vercel.app/myclass/api?subject=${params?.subject}`
       )
 
       setLatest(data.service)

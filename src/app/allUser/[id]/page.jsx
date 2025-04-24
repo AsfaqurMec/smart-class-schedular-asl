@@ -28,7 +28,7 @@ const [selectedCourse, setSelectedCourse] = useState('');
     fetchUsers();
     // const getData = async () => {
     //     try {
-    //         const response = await axios.get("http://localhost:3000/allUser/api/");
+    //         const response = await axios.get("https://schedular-asl.vercel.app/allUser/api/");
     //         console.log("Full API Response:", response);
             
     //         if (response.data) {
@@ -47,7 +47,7 @@ const [selectedCourse, setSelectedCourse] = useState('');
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/allUser/api/");
+    const response = await axios.get("https://schedular-asl.vercel.app/allUser/api/");
     if (response.data) {
       setLatest(response.data.service);
     }
@@ -59,7 +59,7 @@ const fetchUsers = async () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      ` http://localhost:3000/allCourse`
+      ` https://schedular-asl.vercel.app/allCourse`
     )
     
     setCourse(data.service)
@@ -78,7 +78,7 @@ const roleChange = async () => {
     if(selectedDay === 'member' || 'admin'){
        setSelectedCourse('None');
     }
-    const response = await fetch("http://localhost:3000/update/api/", {
+    const response = await fetch("https://schedular-asl.vercel.app/update/api/", {
       method: "POST",
       body: JSON.stringify({
         email: classes[0]?.email,

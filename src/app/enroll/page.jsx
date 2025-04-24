@@ -12,7 +12,10 @@ import { useRouter } from "next/navigation";; // Import useRouter
 import { FaEye } from 'react-icons/fa';
 import { FaEyeSlash } from "react-icons/fa6";
 import { FaGoogle, FaGithub, FaFacebookF, FaLinkedinIn } from 'react-icons/fa';
-
+import { HiOutlineUser, HiOutlineLockClosed } from 'react-icons/hi';
+import { MdOutlineMailLock } from "react-icons/md";
+import { RiLockPasswordLine } from "react-icons/ri";
+import { CiUnlock } from "react-icons/ci";
 const SignUpPage = () => {
 
   const [show, setShow] = useState(false);
@@ -56,7 +59,7 @@ const SignUpPage = () => {
     formData.append('image', file); // Use the file directly
   
     try {
-      const res = await fetch(' http://localhost:3000/upload/api', {
+      const res = await fetch(' https://schedular-asl.vercel.app/upload/api', {
         method: 'POST',
         body: formData, // Send the FormData directly
       });
@@ -110,7 +113,7 @@ const SignUpPage = () => {
       course:[]
 
     };
-    const resp = await fetch(" http://localhost:3000/enroll/api", {
+    const resp = await fetch(" https://schedular-asl.vercel.app/enroll/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
@@ -120,14 +123,14 @@ const SignUpPage = () => {
 
     if (resp.status === 200) {
       setUser(newUser); // Save the user details in context
-      toast.success("Course Purchase Successfully");
+      toast.success("User Register Successfully");
       //console.log(newUser);
       setImageUrl(null);
       event.target.reset();
 
      // Redirect after 2 seconds
      setTimeout(() => {
-      router.push("/");
+      router.push("/login");
     }, 2000); // 2000 milliseconds = 2 seconds
 
 
@@ -148,7 +151,7 @@ const SignUpPage = () => {
     };
 
     try {
-      const { data } = await axios.post("http://localhost:3000/make-payment/api", paynetData);
+      const { data } = await axios.post("https://schedular-asl.vercel.app/make-payment/api", paynetData);
       if (data.url) {
         router.push(data.url);
       }
@@ -165,7 +168,7 @@ const SignUpPage = () => {
     <div className="container  px-5 lg:px-24 mx-auto py-5">
       <div className="grid grid-cols-1 gap-12 items-center justify-center w-full">
        
-        <div className="w-full lg:w-1/2 mx-0 lg:mx-auto border-2 backdrop-blur-3xl bg-[#ffffff4f] px-12 py-5 border-red-400 rounded-md">
+        <div className="w-full lg:w-[70%] mx-0 lg:mx-auto border-2 backdrop-blur-3xl glass bg-[#d2d2d275] px-12 py-5 border-red-400 rounded-md">
           <h6 className="text-5xl font-semibold text-[#8d1e18] text-center mb-8">
             Sign Up
           </h6>
@@ -173,7 +176,7 @@ const SignUpPage = () => {
 
           <form onSubmit={handleSignUp} action="">
 
-           <div className="mb-5 shadow-md shadow-orange-900 p-5">
+           <div className="mb-5 shadow-md shadow-red-400 p-5 glass rounded-sm">
       <h1 className="mb-3 font-semibold">Upload Profile Image</h1>
       <div className="flex justify-between">
 
@@ -185,7 +188,7 @@ const SignUpPage = () => {
       >
   {({ open }) => {
     return (
-      <button className="border-2 border-black p-2 rounded-md hover:bg-blue-500 text-white bg-[#8d1e18cf]" onClick={() => open()}>
+      <button className="border-2 border-black p-2 rounded-md hover:bg-blue-500 text-white bg-[#a7211abe]" onClick={() => open()}>
         Upload an Image
       </button>
     );
@@ -210,32 +213,38 @@ const SignUpPage = () => {
       {/* {message && <p>{message}</p>} */}
       
     </div>                                                                                                          
-
-            <label className="text-black" htmlFor="email">Name</label> <br />
+            <div className="flex flex-col md:flex-row items-center gap-5 pt-5">
+            <div className="w-full md:w-1/2 flex items-center glass rounded-md">
+             <HiOutlineUser className="text-gray-500 text-2xl ml-2" />
             <input
               type="text"
               name="name"
               placeholder="your name"
-              className="w-full px-3 py-2 border-b-[#b14f25] rounded-md border-b-2 focus:border-2 focus:border-[#18100c] focus:outline-none bg-transparent text-black text-lg"
+              className="w-full px-3 py-2 focus:outline-none bg-transparent text-black text-lg "
                required />
-            <br /> <br />
-            <label className="text-black" htmlFor="email">Email</label> <br />
+            </div>
             
+            <div className="w-full md:w-1/2 flex items-center glass rounded-md">
+            <MdOutlineMailLock className="text-gray-500 text-2xl ml-2" />
             <input
-              type="text"
+              type="email"
               name="email"
               placeholder="your email"
-              className="w-full px-3 py-2 border-b-[#bd5224] rounded-md border-b-2 focus:border-2 focus:border-[#18100c] focus:outline-none bg-transparent text-black text-lg"
+              className="w-full px-3 py-2 focus:outline-none bg-transparent text-black text-lg "
                required />
-            <br /> <br />
-            <label className="text-black" htmlFor="password">Password</label> <br />
-            <div className="relative">
+            </div>
+            </div>
+            <div className="flex flex-col md:flex-row items-center gap-5 mt-5 w-full">
+
+            <div className="relative w-full md:w-1/2">
+            <div className="w-full flex items-center glass rounded-md">
+            <RiLockPasswordLine className="text-gray-500 text-2xl ml-2" />
             <input
                type={show ? "text" : "password"}
               name="password"
               placeholder="your password"
               onChange={handlePasswordChange}
-              className="w-full px-3 py-2 border-b-[#a7451c] rounded-md border-b-2 focus:border-2 focus:border-[#18100c] focus:outline-none bg-transparent text-black text-lg"
+              className="w-full px-3 py-2  rounded-md  focus:outline-none bg-transparent text-black text-lg "
               required />
               <span className="absolute top-4 right-2 cursor-pointer" onClick={()=> setShow(!show)}>
                                  {
@@ -243,10 +252,11 @@ const SignUpPage = () => {
                                  }
                                  </span>
                </div>
-            <br />
+               </div>
 
-            <label className="text-black" htmlFor="password">Confirm Password</label> <br />
-            <div className="relative">
+               <div className="w-full md:w-1/2 flex items-center glass rounded-md">
+               <CiUnlock className="text-gray-500 text-2xl ml-2" />
+            <div className="relative w-full">
             <input
                type={show ? "text" : "password"}
               name="confirmPassword"
@@ -254,7 +264,7 @@ const SignUpPage = () => {
               id='confirmPassword'
               value={confirmPassword}
               onChange={handleConfirmPasswordChange}
-              className="w-full px-3 py-2 border-b-[#a7451c] rounded-md border-b-2 focus:border-2 focus:border-[#18100c] focus:outline-none bg-transparent text-black text-lg"
+              className="w-full px-3 py-2 rounded-md focus:outline-none bg-transparent text-black text-lg"
               required />
               <span className="absolute top-4 right-2 cursor-pointer" onClick={()=> setShow(!show)}>
                                  {
@@ -262,7 +272,8 @@ const SignUpPage = () => {
                                  }
                                  </span>
                </div>
-            <br />
+               </div>
+               </div>
             <button
             disabled={password !== confirmPassword}
               type="submit"
@@ -279,7 +290,7 @@ const SignUpPage = () => {
                                        <SocialButton  icon={<FaGoogle />} />
                                        <SocialButton icon={<FaGithub />} />
                                        <SocialButton icon={<FaFacebookF />} />
-                                       <SocialButton icon={<FaLinkedinIn />} />
+                                       
                                      </div>
            
             <h6 className="mt-5 mb-5 text-center text-black">

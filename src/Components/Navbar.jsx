@@ -71,7 +71,7 @@ const handleDelete = () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      ` http://localhost:3000`
+      ` https://schedular-asl.vercel.app`
     )
     
     setLatest(data.service)
@@ -187,7 +187,7 @@ const Headphones = 'Headphones';
     </div>
 
 
-                   <Link href='/' data-aos="fade-right" data-aos-duration="2000" data-aos-delay="200" className="hidden lg:flex btn hover:bg-transparent border-none bg-transparent shadow-none text-black p-0 font-bold normal-case text-lg md:text-2xl lg:text-3xl" >
+                   <Link href='/' data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200" className="hidden lg:flex btn hover:bg-transparent border-none bg-transparent shadow-none text-black p-0 font-bold normal-case text-lg md:text-2xl lg:text-3xl" >
                         {/* <h1 className="lg:ml-5 ml-0">Exponential</h1> */}
                       <Image className="w-24 md:w-32 h-10 md:h-[55px] ml-0 lg:ml-10 rounded-sm" src={logo} alt="logo"></Image>
                       </Link>
@@ -216,13 +216,13 @@ const Headphones = 'Headphones';
                <div className="w-full flex justify-end gap-2 items-center pr-1 md:pr-3 lg:pr-14">
           
         
-                           <div data-aos="fade-left" data-aos-duration="2000" data-aos-delay="200" className="flex justify-end">
+                           <div data-aos="fade-down" data-aos-duration="2000" data-aos-delay="200" className="flex justify-end">
                             {
-                              user || session?.data?.user? 
+                               session?.data?.user? 
                           
                            <Link href='/account'>
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-9 md:w-8 rounded-full border-2 border-blue-300 shadow-2xl" src={user?.image ||session?.data?.user?.image } /> <span className="text-white text-base hover:text-black hover:shadow-lg md:flex hidden">{ user?.name || session?.data?.user?.name}</span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <img className="w-9 md:w-8 rounded-full border-2 border-blue-300 shadow-2xl" src={session?.data?.user?.image } /> <span className="text-white text-base hover:text-black hover:shadow-lg md:flex hidden">{ session?.data?.user?.name}</span> </h1>
                            </Link>
                            :
                                <div className="flex gap-1 md:gap-2">

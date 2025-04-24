@@ -67,7 +67,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch('http://localhost:3000/availability', {
+      const res = await fetch('https://schedular-asl.vercel.app/availability', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(slot),
@@ -113,7 +113,7 @@ const Page = () => {
     setGeneratedCode(code);
 
     try {
-      const response = await fetch("http://localhost:3000/email/api/", {
+      const response = await fetch("https://schedular-asl.vercel.app/email/api/", {
         method: "POST",
         body: JSON.stringify({
           email: session?.data?.user?.email || user?.email,
@@ -148,7 +148,7 @@ const Page = () => {
   // Function to update the password
   const updatePassword = async () => {
     try {
-      const response = await fetch("http://localhost:3000/update/api/", {
+      const response = await fetch("https://schedular-asl.vercel.app/update/api/", {
         method: "POST",
         body: JSON.stringify({
           email: session?.data?.user?.email || user?.email,
@@ -240,7 +240,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:3000/availability", {
+      const res = await fetch("https://schedular-asl.vercel.app/availability", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSlot),
