@@ -11,7 +11,7 @@ import { IoIosSearch } from "react-icons/io";
 import { CiHeart } from "react-icons/ci";
 import { IoCartOutline } from "react-icons/io5";
 import { useEffect, useRef, useState } from "react";
-import logo from '../../public/asl.png'
+import logo from '../../public/asl-removebg-preview.png'
 import { useUser } from "../../context/UserContext";
 import { useSession } from "next-auth/react";
 import axios from "axios";
@@ -120,27 +120,27 @@ const Headphones = 'Headphones';
         <>
         
        {/* upper NAVBAR */}
-       <div className="sticky top-0 z-50 shadow-sm backdrop-blur-xl ">
-       <div  className="navbar shadow-sm bg-[#c4282800] px-1 md:px-2 flex w-full">
-               <div className="w-[40%] lg:w-[20%] ">
+       <div className="sticky top-0 z-10 shadow-sm backdrop-blur-xl ">
+       <div  className="navbar shadow-sm bg-[#00000027] px-1 md:px-2 flex w-full">
+               <div className="w-[50%] lg:w-[20%] ">
 
 <div className="flex justify-start gap-1 items-center">
 
 <div className="drawer flex lg:hidden justify-start p-0">
       <input id="my-drawer-4" type="checkbox" className="drawer-toggle" ref={drawerRef} />
-      <div className="drawer-content">
+      <div className="drawer-content flex">
         {/* Page content here */}
         <label htmlFor="my-drawer-4" className="drawer-button btn p-0 bg-transparent border-none shadow-none text-slate-50 hover:bg-transparent text-2xl">
-          <GiHamburgerMenu className="md:w-8 w-9 h-9 md:h-8 text-black mx-2" />
+          <GiHamburgerMenu className="md:w-8 w-9 h-9 md:h-8 text-white mx-2" />
         </label>
         <Link href='/' className=" btn hover:bg-transparent border-none bg-transparent shadow-none text-black p-0 font-bold normal-case text-lg md:text-2xl lg:text-3xl" >
                         {/* <h1 className="lg:ml-5 ml-0">Exponential</h1> */}
                       <Image className="w-24 md:w-1 h-12 md:h-32 ml-0 lg:ml-10 rounded-sm" src={logo} alt="logo"></Image>
                       </Link>
       </div>
-      <div className="drawer-side z-50 overflow-y-scroll">
+      <div className="drawer-side z-10 overflow-y-scroll">
         <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay"></label>
-        <ul className="menu bg-[#ffff] border-2 border-sky-200 text-base-content min-h-[150vh] w-80 pb-10 pt-1 px-1 z-50 space-y-1">
+        <ul className="menu glass bg-[#012b3a] border-2 border-sky-100 text-base-content min-h-[150vh] w-64 md:w-80 pb-10 pt-1 px-1 z-10 space-y-1">
           {/* <li className="flex flex-row w-full justify-end">
             <label htmlFor="my-drawer-4" aria-label="close sidebar" className="drawer-overlay py-1 pl-[11px] w-9 rounded-full bg-[#000000] hover:bg-[#061245] text-white text-xl font-bold">
               X
@@ -152,7 +152,7 @@ const Headphones = 'Headphones';
 
           <Link href="/" onClick={closeDrawer}>
             <div className="collapse border-b-[2px] border-b-[#cfcfcf] hover:bg-[#dedddd]">
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-white hover:text-black  text-xl font-medium">
                 <h1>Home</h1>
               </div>
             </div>
@@ -160,7 +160,7 @@ const Headphones = 'Headphones';
 
           <Link href="/courses" onClick={closeDrawer}>
             <div className="collapse border-b-[2px] border-b-[#cfcfcf] hover:bg-[#dedddd]">
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-white hover:text-black text-xl font-medium">
                 <h1>Courses</h1>
               </div>
             </div>
@@ -168,7 +168,7 @@ const Headphones = 'Headphones';
 
           <Link href="/instructor" onClick={closeDrawer}>
             <div className="collapse border-b-[2px] border-b-[#cfcfcf] hover:bg-[#dedddd]">
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-white hover:text-black  text-xl font-medium">
                 <h1>Instructors</h1>
               </div>
             </div>
@@ -176,7 +176,7 @@ const Headphones = 'Headphones';
 
           <Link href="/session" onClick={closeDrawer}>
             <div className="collapse border-b-[2px] border-b-[#cfcfcf] hover:bg-[#dedddd]">
-              <div className="collapse-title text-xl font-medium">
+              <div className="collapse-title text-white hover:text-black  text-xl font-medium">
                 <h1>Upcoming Session</h1>
               </div>
             </div>
@@ -227,8 +227,8 @@ const Headphones = 'Headphones';
                            :
                                <div className="flex gap-1 md:gap-2">
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-black  "><Link href='/login' className="text-[12px] md:text-[14px] hover:bg-white hover:text-red-700 hover:font-semibold btn text-white border-2 border-red-400 bg-red-500 md:bg-red-400">Login</Link></span> </h1>
-                               <h1 className="flex gap-1 items-center uppercase font-medium"> <span className="text-black  "><Link href='/enroll' className="text-[12px] md:text-[14px] hover:text-white hover:bg-red-400 hover:font-semibold btn text-black bg-white border-2 border-white">Sign Up</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-black  "><Link href='/login' className="text-[12px] md:text-[14px] hover:bg-white hover:text-red-700 hover:font-semibold btn text-white   bg-[#0c516f] md:bg-white">Login</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <span className="text-black  "><Link href='/enroll' className="text-[12px] md:text-[14px] hover:text-white hover:bg-[#0c516f] hover:font-semibold btn text-black bg-white border-2 border-white">Sign Up</Link></span> </h1>
                                </div>
                             } 
                        </div>

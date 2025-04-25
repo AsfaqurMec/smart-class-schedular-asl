@@ -35,7 +35,18 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <UserProvider>
 
-        <body className="antialiased background-image">
+        <body className="antialiased background-image relative z-10">
+        <video src='/video.mp4'
+                autoPlay
+                loop
+                muted
+                playsInline
+                preload="auto"
+                className="absolute top-0 left-0 w-full h-full object-cover z-0"
+              >
+                <source src='/video.mp4' type="video/mp4" />
+                
+              </video>
           <Navbar />
           {children}
           <Toaster></Toaster>

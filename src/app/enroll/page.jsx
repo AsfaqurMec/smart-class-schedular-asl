@@ -165,18 +165,18 @@ const SignUpPage = () => {
 //console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
   return (
-    <div className="container  px-5 lg:px-24 mx-auto py-5">
+    <div className="container px-2 md:px-5 lg:px-24 mx-auto py-5 relative">
       <div className="grid grid-cols-1 gap-12 items-center justify-center w-full">
        
-        <div className="w-full lg:w-[70%] mx-0 lg:mx-auto border-2 backdrop-blur-3xl glass bg-[#d2d2d275] px-12 py-5 border-red-400 rounded-md">
-          <h6 className="text-5xl font-semibold text-[#8d1e18] text-center mb-8">
+        <div className="w-full lg:w-[70%] mx-0 lg:mx-auto border-2 backdrop-blur-3xl glass bg-[#d2d2d275] px-3 md:px-12 py-5 border-red-400 rounded-md">
+          <h6 className="text-5xl font-semibold text-[#053245] text-center mb-8">
             Sign Up
           </h6>
 
 
           <form onSubmit={handleSignUp} action="">
 
-           <div className="mb-5 shadow-md shadow-red-400 p-5 glass rounded-sm">
+           <div className="mb-5 shadow-md shadow-[#0c516f] p-5 glass rounded-sm">
       <h1 className="mb-3 font-semibold">Upload Profile Image</h1>
       <div className="flex justify-between">
 
@@ -188,7 +188,7 @@ const SignUpPage = () => {
       >
   {({ open }) => {
     return (
-      <button className="border-2 border-black p-2 rounded-md hover:bg-blue-500 text-white bg-[#a7211abe]" onClick={() => open()}>
+      <button className="border-2 border-black p-2 rounded-md hover:bg-blue-500 text-white bg-[#0c516f]" onClick={() => open()}>
         Upload an Image
       </button>
     );
@@ -277,7 +277,7 @@ const SignUpPage = () => {
             <button
             disabled={password !== confirmPassword}
               type="submit"
-              className="w-full btn btn-primary bg-[#9a4c2b] hover:bg-[#462828] mt-8 text-lg border-none"
+              className="w-full btn btn-primary bg-[#0c516f] hover:bg-[#283e47] mt-8 text-lg border-none"
             >
               Sign Up
             </button>

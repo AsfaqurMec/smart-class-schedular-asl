@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { MdAddCall } from "react-icons/md";
 import { MdMarkEmailRead } from "react-icons/md";
 
-import logo from '../../public/asl.png';
+import logo from '../../public/asl-removebg-preview.png';
 
 const Footer = () => {
 
@@ -13,13 +13,13 @@ const Footer = () => {
   
 
     return (
-        <div className=' bg-[#0b0719] px-5'>
+        <div className=' bg-[#0b0719] px-5 relative'>
        
            <footer className="w-full px-5 md:px-20 grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-2 grid  bg-[#0c0a1b]  text-white py-10 border-t-[.5px] border-t-gray-600">
   
   <nav className='space-y-2'>
   {/* <Image className='w-12 h-12' src={logo1} alt='photo'></Image> */}
-  <Image className="w-24 md:w-32 h-10 md:h-16 ml-0  rounded-sm" src={logo} alt="logo"></Image>
+  <Image className="w-36 md:w-32 h-20 md:h-16 ml-0  rounded-sm" src={logo} alt="logo"></Image>
   <p>A smart class scheduling website.</p>
   <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01572908354</p>
   </nav>                                                                                        

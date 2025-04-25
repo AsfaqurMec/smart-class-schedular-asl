@@ -17,7 +17,7 @@ export default function SessionComponent() {
     const  session  = useSession();
      const { user } = useUser();
   return (
-    <div className="w-[100%] mx-auto flex justify-around items-center lg:hidden bottom-0 bg-violet-200 fixed py-1 md:py-4 z-50">
+    <div className="w-[100%] mx-auto flex justify-around items-center lg:hidden bottom-0 bg-violet-200 fixed py-1 md:py-4 z-10">
       
       <Link href="/">
         <div className={pathname === "/" ? "bg-blue-400 flex flex-col items-center border py-2 px-4 rounded-md" : "flex flex-col items-center  py-2 px-4 rounded-md"}>

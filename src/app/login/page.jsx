@@ -30,8 +30,8 @@ const Page = () => {
 
   return (
 
-    <div className="bg-gradient-to-r from-red-300 to-red-400 flex items-center justify-center bg-gray-100 px-4 py-10 lg:py-20">
-      <div className="flex flex-col bg-none lg:flex-row w-full max-w-6xl rounded-xl  overflow-hidden gap-3">
+    <div className="glass flex items-center justify-center  px-4 py-10 lg:py-20 relative">
+      <div className="flex flex-col bg-none lg:flex-row w-full max-w-6xl rounded-sm  overflow-hidden gap-3">
 
                     {/* Left side (Register section) */}
         <div className="hidden lg:flex bg-gradient-to-r from-red-400 via-red-700 to-amber-800 text-white flex-col items-center justify-center p-8 md:w-1/2 rounded-b-full  lg:rounded-tl-full  banner2 h-72 md:h-auto">   
@@ -86,9 +86,9 @@ const Page = () => {
                <div className="form-control mt-2 p-0">
                <button
                  type="submit"
-                 className="w-full btn bg-red-800 text-white py-3 rounded-md hover:bg-red-900 transition mb-4"
+                 className="w-full btn bg-[#0c516f] text-white py-3 rounded-md hover:bg-[#1c2b32] transition mb-4"
                >
-                 Sign In
+                 Login
                </button>
 
                {/* Social login */}

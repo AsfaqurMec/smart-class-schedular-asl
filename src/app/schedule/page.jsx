@@ -124,7 +124,7 @@ const Page = () => {
   };
 
   return (
-    <div className="p-6 w-full backdrop-blur-sm bg-[#ffffff96] ">
+    <div className="p-6 w-full backdrop-blur-sm bg-[#ffffff96] relative">
       <h1 className="text-3xl font-bold mb-6">Mentor's Dashboard</h1>
 
       {/* Add Schedule Form */}

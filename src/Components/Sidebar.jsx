@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 const Sidebar = () => {
   return (
-    <div className="w-40 bg-gray-800 text-white h-screen flex flex-col">
+    <div className="w-40 bg-gray-800 text-white h-screen flex flex-col relative">
       <div className="p-6 text-lg font-bold">Dashboard</div>
       <ul className="flex-grow">
         <li className="p-4 hover:bg-gray-700">

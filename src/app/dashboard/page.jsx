@@ -8,7 +8,7 @@ const Dashboard = () => {
 
 
   return (
-     <Layout>
+     <Layout className="relative">
        <h1>Welcome to Dashboard</h1>
       </Layout>
   );

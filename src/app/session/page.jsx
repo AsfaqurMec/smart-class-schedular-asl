@@ -27,10 +27,10 @@ const Page = () => {
 
     getData();
   }, []);
-
+//  bg-gradient-to-r from-[#e01515a9] via-[#de472cde] to-[#ad270670]
   return (
-    <div className="bg-[#F0F2FA] min-h-screen py-10 px-4 md:px-16">
-      <h1 className="text-center text-4xl font-bold text-gray-800 mb-8">Our Upcoming Sessions</h1>
+    <div className="glass min-h-screen py-10 px-4 md:px-16 relative">
+      <h1 className="text-center text-4xl font-bold text-white mb-12">Our Upcoming Sessions</h1>
 
       {latest.length > 0 ? (
         <motion.div
@@ -49,14 +49,14 @@ const Page = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.1, ease: 'easeOut' }}
-              className="bg-white rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4
+              className=" rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4
                          transition-all duration-500 ease-in-out
                          group hover:text-white
-                         bg-gradient-to-r from-[#e01515a9] via-[#de472cde] to-[#ad270670]
+                         glass
                           animate-gradient-x"
             >
               <div className="flex items-center gap-4">
-                <div className="text-center min-w-[80px] bg-[#ffffffdc] py-5 rounded-lg">
+                <div className="text-center min-w-[80px] bg-[#ffffffb1] py-5 rounded-lg">
                   <p className="text-xs text-[#8f0a0a] font-semibold ">
                     {format(new Date(session.day), 'dd MMM')}
                   </p>

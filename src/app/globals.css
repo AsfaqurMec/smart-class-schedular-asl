@@ -36,12 +36,7 @@
     --noise: 0;
   }
   
-  .background-image {
-    background: url("../../public/banner-5.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-  
-  }
+ 
 
   .banner2 {
     background: url("../../public/bb.jpg");
@@ -70,7 +65,7 @@
   
   .animate-gradient-x {
     background-size: 200% 200%;
-    animation: gradient-slide 2s ease infinite alternate;
+    animation: gradient-slide 1s ease infinite alternate;
   }
   
 

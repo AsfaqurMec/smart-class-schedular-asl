@@ -26,10 +26,10 @@ const [latest, setLatest] = useState([]);
 
 {latest.length > 0 ? 
             
-            <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 justify-center gap-5 px-10 py-5'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 px-4 md:px-10 py-5 relative'>
               
               {latest?.map(latest => (
-                    <div key={latest._id} className='space-y-3 shadow-2xl p-3 rounded-md backdrop-blur-3xl bg-[#ffffff67] flex flex-col justify-between' >
+                    <div key={latest._id} className='space-y-3 shadow-2xl p-3 rounded-md backdrop-blur-3xl bg-[#ffffff67] flex flex-col justify-between hover:animate-pulse' >
                       <div>
                            <img src={latest.image} alt='' className='rounded-md'/>
                            <h1 className='text-2xl font-bold'>{latest.title}</h1>

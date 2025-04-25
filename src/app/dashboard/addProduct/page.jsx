@@ -119,7 +119,7 @@ const handleUploadComplete = (result) => {
   return (
     <Layout>
       <h1 className="text-2xl font-bold text-center mb-20">Add New Course</h1>
-      <form onSubmit={handleSubmit} action="" className="space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
+      <form onSubmit={handleSubmit} action="" className="glass space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
         <div>
           <label htmlFor="title" className="block font-medium">Course Title</label>
           <input
