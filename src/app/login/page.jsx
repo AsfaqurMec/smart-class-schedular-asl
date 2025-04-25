@@ -30,11 +30,11 @@ const Page = () => {
 
   return (
 
-    <div className="glass flex items-center justify-center  px-4 py-10 lg:py-20 relative">
+    <div className="glass flex items-center justify-center  px-4 py-5 lg:py-20 relative">
       <div className="flex flex-col bg-none lg:flex-row w-full max-w-6xl rounded-sm  overflow-hidden gap-3">
 
                     {/* Left side (Register section) */}
-        <div className="hidden lg:flex bg-gradient-to-r from-red-400 via-red-700 to-amber-800 text-white flex-col items-center justify-center p-8 md:w-1/2 rounded-b-full  lg:rounded-tl-full  banner2 h-72 md:h-auto">   
+        <div className="flex bg-gradient-to-r from-red-400 via-red-700 to-amber-800 text-white flex-col items-center justify-center p-8 md:w-1/2 rounded-b-full  lg:rounded-tl-full  banner2 h-72 md:h-auto">   
           {/* <h2 className="text-3xl font-bold mb-2">Welcome! To ASL</h2>
           <p className="mb-6">Don't have an account?</p>
           <Link href={"/enroll"}> <button className="border border-white px-6 py-2 rounded-full hover:bg-white hover:text-blue-500 transition">

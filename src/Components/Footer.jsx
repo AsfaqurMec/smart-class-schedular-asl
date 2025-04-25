@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { MdAddCall } from "react-icons/md";
 import { MdMarkEmailRead } from "react-icons/md";
 
-import logo from '../../public/asl-removebg-preview.png';
+import logo from '../../public/asl-logo.png';
 
 const Footer = () => {
 

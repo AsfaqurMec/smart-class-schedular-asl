@@ -7,7 +7,7 @@ import { UserProvider, useUser} from "../../context/UserContext";
 import AuthProvider from "../../services/AuthProvider";
 // import LowerNav from "@/Components/LowerNav";
 import { Toaster } from "react-hot-toast";
-
+import backup from '../../public/backup.png'
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -35,7 +35,8 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <UserProvider>
 
-        <body className="antialiased background-image relative z-10">
+        <body className="antialiased background-image relative z-20">
+        <div className="absolute top-0 left-0 w-full h-full object-cover bg-cover bg-center -z-0 backup" />
         <video src='/video.mp4'
                 autoPlay
                 loop

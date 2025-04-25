@@ -36,12 +36,18 @@
     --noise: 0;
   }
   
- 
-
-  .banner2 {
-    background: url("../../public/bb.jpg");
+  .backup {
+    background: url("../../public/backup.png");
     background-repeat: no-repeat;
     background-size: cover;
+    background-position:center;
+    
+  }
+
+  .banner2 {
+    background: url("../../public/asl-logo.png");
+    background-repeat: no-repeat;
+    background-size: contain;
     background-position:center;
     
   }

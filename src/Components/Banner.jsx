@@ -40,10 +40,10 @@ const Banner = () => {
               </video> */}
 
               {/* Overlay Content */}
-              <div className="relative h-[70vh] md:min-h-screen z-10 w-full gap-5 md:gap-0 flex flex-col lg:flex-row justify-center items-center px-5 md:px-5 lg:px-10 pt-6 pb-14 lg:pb-36 bg-opacity-30">
+              <div className="relative h-[70vh] md:min-h-screen z-20 w-full gap-5 md:gap-0 flex flex-col lg:flex-row justify-center items-center px-5 md:px-5 lg:px-10 pt-6 pb-14 lg:pb-36 bg-opacity-30">
                 <div className="w-full lg:w-[100%] flex flex-col justify-center items-center space-y-2 md:space-y-3 py-10 md:py-0">
                   <h1
-                    className="text-left text-blue-200 font-bold tracking-[.12em] text-[40px] md:text-9xl"
+                    className="text-left text-blue-200 font-bold tracking-[.12em] text-[42px] md:text-9xl"
                     data-aos="fade-up"
                     data-aos-duration="2000"
                     data-aos-delay="200"
@@ -51,7 +51,7 @@ const Banner = () => {
                     Smart Class
                   </h1>
                   <h1
-                    className="text-left text-white font-medium tracking-[.12em] text-3xl md:text-8xl"
+                    className="text-left text-white font-medium tracking-[.12em] text-4xl md:text-8xl"
                     data-aos="fade-down"
                     data-aos-duration="2000"
                     data-aos-delay="400"
@@ -59,7 +59,7 @@ const Banner = () => {
                     Scheduler.
                   </h1>
                   <h1
-                    className="text-left text-white font-medium tracking-[.12em] text-sm md:text-4xl"
+                    className="text-left text-white font-medium tracking-[.12em] text-lg md:text-4xl"
                     data-aos="fade-right"
                     data-aos-duration="2000"
                     data-aos-delay="600"
