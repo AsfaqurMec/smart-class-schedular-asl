@@ -79,7 +79,7 @@ const handleUploadComplete = (result) => {
     e.preventDefault();
    // console.log("Product Details:", product);
 
-    const resp = await fetch('https://schedular-asl.vercel.app/dashboard/addProduct/api', {
+    const resp = await fetch('/dashboard/addProduct/api', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -95,7 +95,7 @@ const handleUploadComplete = (result) => {
         course: product
      }
 
-      const resp = await fetch('https://schedular-asl.vercel.app/updateUser/', {
+      const resp = await fetch('/updateUser/', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -118,8 +118,8 @@ const handleUploadComplete = (result) => {
   
   return (
     <Layout>
-      <h1 className="text-2xl font-bold text-center mb-20">Add New Course</h1>
-      <form onSubmit={handleSubmit} action="" className="glass space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md">
+      <h1 className="text-2xl md:text-5xl text-white font-bold text-center mb-20">Add New Course</h1>
+      <form onSubmit={handleSubmit} action="" className="glass space-y-4 w-[90%] lg:w-[50%] mx-auto p-5 shadow-2xl shadow-blue-300 border-blue-300 border-2 rounded-md bg-[#aeaeaea2]">
         <div>
           <label htmlFor="title" className="block font-medium">Course Title</label>
           <input
@@ -170,7 +170,7 @@ const handleUploadComplete = (result) => {
       >
   {({ open }) => {
     return (
-      <button  type="button" className='btn bg-blue-500 rounded-md text-white' onClick={() => open()}>
+      <button  type="button" className='btn bg-blue-500 hover:bg-blue-900 rounded-md text-white' onClick={() => open()}>
         Upload Image
       </button>
     );
@@ -193,7 +193,7 @@ const handleUploadComplete = (result) => {
 
         <button 
           type="submit"
-          className="btn bg-teal-500 text-white px-6 py-2 rounded w-full"
+          className="btn bg-[#0c516f] hover:bg-[#1f2f36] text-white px-6 py-2 rounded w-full"
         >
           Create Course
         </button>

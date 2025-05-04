@@ -59,7 +59,7 @@ const SignUpPage = () => {
     formData.append('image', file); // Use the file directly
   
     try {
-      const res = await fetch(' https://schedular-asl.vercel.app/upload/api', {
+      const res = await fetch(' /upload/api', {
         method: 'POST',
         body: formData, // Send the FormData directly
       });
@@ -113,7 +113,7 @@ const SignUpPage = () => {
       course:[]
 
     };
-    const resp = await fetch(" https://schedular-asl.vercel.app/enroll/api", {
+    const resp = await fetch(" /enroll/api", {
       method: "POST",
       body: JSON.stringify(newUser),
       headers: {
@@ -151,7 +151,7 @@ const SignUpPage = () => {
     };
 
     try {
-      const { data } = await axios.post("https://schedular-asl.vercel.app/make-payment/api", paynetData);
+      const { data } = await axios.post("/make-payment/api", paynetData);
       if (data.url) {
         router.push(data.url);
       }

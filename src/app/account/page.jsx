@@ -54,8 +54,8 @@ const Page = () => {
     const start = startHour + startMin / 60;
     const end = endHour + endMin / 60;
 
-    if (end - start < 5) {
-      setError('Time difference must be at least 5 hours.');
+    if (end - start < 2) {
+      setError('Time difference must be at least 2 hours.');
       return;
     }
 
@@ -67,7 +67,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch('https://schedular-asl.vercel.app/availability', {
+      const res = await fetch('/availability', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(slot),
@@ -113,7 +113,7 @@ const Page = () => {
     setGeneratedCode(code);
 
     try {
-      const response = await fetch("https://schedular-asl.vercel.app/email/api/", {
+      const response = await fetch("/email/api/", {
         method: "POST",
         body: JSON.stringify({
           email: session?.data?.user?.email || user?.email,
@@ -148,7 +148,7 @@ const Page = () => {
   // Function to update the password
   const updatePassword = async () => {
     try {
-      const response = await fetch("https://schedular-asl.vercel.app/update/api/", {
+      const response = await fetch("/update/api/", {
         method: "POST",
         body: JSON.stringify({
           email: session?.data?.user?.email || user?.email,
@@ -240,7 +240,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch("https://schedular-asl.vercel.app/availability", {
+      const res = await fetch("/availability", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(newSlot),
@@ -283,7 +283,7 @@ const Page = () => {
               </Link>
             </li>
           )}
-          {session?.data?.user?.role === "mentor" || "admin" && (
+          {(session?.data?.user?.role === "mentor" || session?.data?.user?.role === "admin" ) && (
             <li className="mb-4">
               <Link href={"/schedule"}>
                 <button className="flex items-center text-gray-600 hover:text-orange-500">

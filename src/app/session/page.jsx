@@ -198,7 +198,7 @@ export default Page;
 //     useEffect(() => {
 //         const getData = async () => {
 //           const { data } = await axios.get(
-//             ` https://schedular-asl.vercel.app/sessions/`
+//             ` /sessions/`
 //           )
           
 //           const today = new Date();

@@ -34,8 +34,8 @@ const Page = () => {
   const fetchData = async (date = "") => {
     try {
       const url = date
-        ? `https://schedular-asl.vercel.app/allSchedule?day=${date}`
-        : "https://schedular-asl.vercel.app/allSchedule";
+        ? `/allSchedule?day=${date}`
+        : "/allSchedule";
       const res = await fetch(url);
       const raw = await res.json();
 
@@ -73,7 +73,7 @@ const Page = () => {
     const end = endHour + endMin / 60;
 
     if (end - start < 2) {
-      setError('Time difference must be at least 5 hours.');
+      setError('Time difference must be at least 2 hours.');
       return;
     }
 
@@ -87,7 +87,7 @@ const Page = () => {
     };
 
     try {
-      const res = await fetch('https://schedular-asl.vercel.app/addSchedule/', {
+      const res = await fetch('/addSchedule/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(slot),
@@ -298,7 +298,7 @@ export default Page;
 //     useEffect(() => {
 //         const getData = async () => {
 //           const { data } = await axios.get(
-//             ` https://schedular-asl.vercel.app/allCourse`)
+//             ` /allCourse`)
           
 //           setLatest(data.service)
          
@@ -310,7 +310,7 @@ export default Page;
 
 //   const fetchData = async (date = "") => {
 //     try {
-//       const url = date ? `https://schedular-asl.vercel.app/allSchedule?day=${date}` : "https://schedular-asl.vercel.app/allSchedule";
+//       const url = date ? `/allSchedule?day=${date}` : "/allSchedule";
 //       const res = await fetch(url);
 
 //       const raw = await res.json();
@@ -353,7 +353,7 @@ export default Page;
 //     };
 
 //     try {
-//       const res = await fetch('https://schedular-asl.vercel.app/addSchedule/', {
+//       const res = await fetch('/addSchedule/', {
 //         method: 'POST',
 //         headers: { 'Content-Type': 'application/json' },
 //         body: JSON.stringify(slot),
@@ -580,7 +580,7 @@ export default Page;
 
 //   useEffect(() => {
 //     const fetchData = async () => {
-//       const res = await fetch('https://schedular-asl.vercel.app/allSchedule/');
+//       const res = await fetch('/allSchedule/');
 //       const raw = await res.json();
 //       setData(raw.service);
 //       const best = getBestOverlappingTimeSlots(raw.service);
@@ -738,7 +738,7 @@ export default Page;
 
 //   useEffect(() => {
 //     const fetchData = async () => {
-//       const res = await fetch('https://schedular-asl.vercel.app/allSchedule/');
+//       const res = await fetch('/allSchedule/');
 //       const raw = await res.json();
 //       setData(raw.service);
 //       const best = getBestOverlappingTimeSlots(raw.service);

@@ -36,7 +36,7 @@ export default function RootLayout({ children }) {
       <UserProvider>
 
         <body className="antialiased background-image relative z-20">
-        <div className="absolute top-0 left-0 w-full h-full object-cover bg-cover bg-center -z-0 backup" />
+        <div className="absolute top-0 left-0 w-full h-full object-cover bg-cover bg-center -z-0 bg-gradient-to-r from-[#48035c] via-[#022246] to-[#33036e] animate-gradient-diagonal" />
         <video src='/video.mp4'
                 autoPlay
                 loop

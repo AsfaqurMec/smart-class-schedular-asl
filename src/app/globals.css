@@ -81,3 +81,22 @@
     -moz-user-select: none;
     -ms-user-select: none;
   }
+
+  @layer utilities {
+    @keyframes gradient-move-diagonal {
+      0% {
+        background-position: 0% 0%;
+      }
+      50% {
+        background-position: 100% 100%;
+      }
+      100% {
+        background-position: 0% 0%;
+      }
+    }
+  
+    .animate-gradient-diagonal {
+      background-size: 200% 200%;
+      animation: gradient-move-diagonal 5s ease-in-out infinite;
+    }
+  }

@@ -2,16 +2,17 @@
   "name": "exponental",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://nexttest.webvictorians.com/",
   "scripts": {
-    "dev": "next dev",
+    "start": "NODE_ENV=production node server.js",
     "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "next dev"
   },
   "dependencies": {
     "aos": "^3.0.0-beta.6",
     "axios": "^1.8.3",
     "cloudinary": "^2.6.0",
+    "express": "^5.1.0",
     "framer-motion": "^12.7.4",
     "mongodb": "^6.14.2",
     "next": "15.2.2",

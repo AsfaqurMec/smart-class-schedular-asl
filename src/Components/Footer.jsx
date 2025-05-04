@@ -21,7 +21,7 @@ const Footer = () => {
   {/* <Image className='w-12 h-12' src={logo1} alt='photo'></Image> */}
   <Image className="w-36 md:w-32 h-20 md:h-16 ml-0  rounded-sm" src={logo} alt="logo"></Image>
   <p>A smart class scheduling website.</p>
-  <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01572908354</p>
+  <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01738891140</p>
   </nav>                                                                                        
   
 
@@ -47,9 +47,9 @@ const Footer = () => {
     <h6 className="footer-title text-xl mb-3 text-[#5e8cf8] opacity-100">CONTACT US</h6>
     
      <div className='space-y-3'>
-      <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01956230265</p>
-      <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01572908354</p>
-          <p className='font-medium text-lg text-[#ffffff] flex items-center'><span className='mr-2'><MdMarkEmailRead /></span> <span className='mr-2 text-blue-500'></span></p>
+      <p className='flex items-center'><span className='mr-2'><MdAddCall /></span>01738891140</p>
+      
+          <p className='font-medium text-lg text-[#ffffff] flex items-center'><span className='mr-2'><MdMarkEmailRead /></span> <span className='mr-2 text-blue-500'>alpha.xcience.lab@gmail.com</span></p>
      </div>
     
   </nav>

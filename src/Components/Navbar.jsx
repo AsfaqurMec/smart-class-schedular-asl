@@ -68,22 +68,22 @@ const handleDelete = () => {
   setText();
 }
 
-useEffect(() => {
-  const getData = async () => {
-    const { data } = await axios.get(
-      ` https://schedular-asl.vercel.app`
-    )
+// useEffect(() => {
+//   const getData = async () => {
+//     const { data } = await axios.get(
+//       ` `
+//     )
     
-    setLatest(data.service)
-   // console.log(data);
-   // console.log(latest);
-  }
-  getData();
+//     setLatest(data.service)
+//    // console.log(data);
+//    // console.log(latest);
+//   }
+//   getData();
   
 
 
 
-}, [latest, session?.data?.user?.email, user?.email])
+// }, [latest, session?.data?.user?.email, user?.email])
 
 //console.log(latest);
 
@@ -93,7 +93,7 @@ useEffect(() => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(` https://electro-brown.vercel.app/search/api?search=${text}`);
+        const { data } = await axios.get(`https://schedular-asl.vercel.app/search/api?search=${text}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         
@@ -227,8 +227,8 @@ const Headphones = 'Headphones';
                            :
                                <div className="flex gap-1 md:gap-2">
                                {/* <button className="text-white text-white-sm bg-green-500 hover:bg-blue-500 text-white mr-2  text-white-ghost">Login</button> */}
-                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-black  "><Link href='/login' className="text-[12px] md:text-[14px] hover:bg-white hover:text-red-700 hover:font-semibold btn text-white   bg-[#0c516f]">Login</Link></span> </h1>
-                               <h1 className="flex gap-1 items-center uppercase font-medium"> <span className="text-black  "><Link href='/enroll' className="text-[12px] md:text-[14px] hover:text-white hover:bg-[#0c516f] hover:font-semibold btn text-black bg-white border-2 border-white">Sign Up</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium text-[8px] md:text-[14px]"> <span className="text-black  "><Link href='/login' className="text-[12px] p-2 md:p-4 md:text-[14px] hover:bg-white hover:text-red-700 hover:font-semibold btn text-white   bg-[#0c516f]">Login</Link></span> </h1>
+                               <h1 className="flex gap-1 items-center uppercase font-medium"> <span className="text-black  "><Link href='/enroll' className="text-[12px] p-2 md:p-4 md:text-[14px] hover:text-white hover:bg-[#0c516f] hover:font-semibold btn text-black bg-white border-2 border-white">Sign Up</Link></span> </h1>
                                </div>
                             } 
                        </div>
