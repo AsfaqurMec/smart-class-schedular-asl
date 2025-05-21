@@ -22,7 +22,7 @@ const Home = () => {
     useEffect(() => {
         const getData = async () => {
           const { data } = await axios.get(
-            ` https://schedular-asl.vercel.app/allCourse`
+            ` http://localhost:3000/allCourse`
           )
           
           setLatest(data.service)
@@ -38,7 +38,7 @@ const Home = () => {
       useEffect(() => {
         const getData = async () => {
           const { data } = await axios.get(
-            ` https://schedular-asl.vercel.app/allMentor`
+            ` http://localhost:3000/allMentor`
           )
           
           setMentor(data.service)

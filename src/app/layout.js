@@ -57,9 +57,7 @@ export default function RootLayout({ children }) {
           </div>
           {/* <LowerNav></LowerNav> */}
           <Footer />
-          
-          
-          
+    
         </body>
         
       </UserProvider>

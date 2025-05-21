@@ -26,18 +26,8 @@ const Banner = () => {
             modules={[Autoplay]}
             className="mySwiper w-full lg:w-full rounded-md"
           >
-            <SwiperSlide className="relative w-full h-[70vh] md:min-h-screen overflow-hidden">
-              {/* Background Video */}
-              {/* <video
-                autoPlay
-                loop
-                muted
-                playsInline
-                className="absolute top-0 left-0 w-full h-full object-cover z-0"
-              >
-                <source src="https://res.cloudinary.com/dzmglrehf/video/upload/v1745508237/3141210-uhd_3840_2160_25fps_hc7ooy.mp4" type="video/mp4" />
-                
-              </video> */}
+            <SwiperSlide className=" w-full h-[70vh] md:min-h-screen overflow-hidden">
+              
 
               {/* Overlay Content */}
               <div className="relative h-[70vh] md:min-h-screen z-20 w-full gap-5 md:gap-0 flex flex-col lg:flex-row justify-center items-center px-2 md:px-5 lg:px-10 pt-6 pb-14 lg:pb-36 bg-opacity-30">
