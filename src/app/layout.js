@@ -35,19 +35,9 @@ export default function RootLayout({ children }) {
     <AuthProvider>
       <UserProvider>
 
-        <body className="antialiased background-image relative z-20">
-        <div className="absolute top-0 left-0 w-full h-full object-cover bg-cover bg-center -z-0 bg-gradient-to-r from-[#48035c] via-[#022246] to-[#33036e] animate-gradient-diagonal" />
-        <video src='/video.mp4'
-                autoPlay
-                loop
-                muted
-                playsInline
-                preload="auto"
-                className="absolute top-0 left-0 w-full h-full object-cover z-0"
-              >
-                <source src='/video.mp4' type="video/mp4" />
-                
-              </video>
+        <body className="antialiased background-image ">
+        
+        
           <Navbar />
           {children}
           <Toaster></Toaster>

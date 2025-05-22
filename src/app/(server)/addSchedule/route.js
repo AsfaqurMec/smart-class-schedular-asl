@@ -1,4 +1,4 @@
-import { connectDB } from "../../../lib/connectDB";
+import { connectDB } from "../../../../lib/connectDB";
 import nodemailer from "nodemailer";
 import { format, parse } from "date-fns";
 //import bcrypt from "bcrypt";

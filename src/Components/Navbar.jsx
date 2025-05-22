@@ -121,7 +121,7 @@ const Headphones = 'Headphones';
         
        {/* upper NAVBAR */}
        <div className="sticky top-0 z-20 shadow-sm backdrop-blur-xl ">
-       <div  className="navbar shadow-sm bg-[#00000027] px-1 md:px-2 flex w-full">
+       <div  className="navbar shadow-sm bg-[#080422f0] px-1 md:px-2 flex w-full">
                <div className="w-[50%] lg:w-[20%] ">
 
 <div className="flex justify-start gap-1 items-center">
