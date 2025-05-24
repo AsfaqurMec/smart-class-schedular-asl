@@ -1,7 +1,11 @@
 import { connectDB } from "../../../../lib/connectDB";
 import nodemailer from "nodemailer";
 import { format, parse } from "date-fns";
-//import bcrypt from "bcrypt";
+import twilio from 'twilio';
+
+const accountSid = process.env.TWILIO_ACCOUNT_SID;
+const authToken = process.env.TWILIO_AUTH_TOKEN;
+const client = twilio(accountSid, authToken);
 
 const EMAIL_USER = process.env.EMAIL_USER;
 const EMAIL_PASS = process.env.EMAIL_PASS;
@@ -15,6 +19,9 @@ const formatTime = (timeStr) =>
 
 export const POST = async (request) => {
   const slot = await request.json();
+
+  
+
   try {
     
     const db = await connectDB();
@@ -24,7 +31,9 @@ export const POST = async (request) => {
   
     const users = await db.collection("users").find().toArray();
     const recipientEmails = users.map((u) => u.email).filter(Boolean);
-
+    const recipientNumber = users.map((u) => u.phone).filter(Boolean);
+   // console.log(recipientNumber);
+    
     // Format times
     const formattedStart = formatTime(slot?.startTime);
     const formattedEnd = formatTime(slot?.endTime);
@@ -56,13 +65,37 @@ export const POST = async (request) => {
       `,
     });
 
+
+//     const message = `📅 New Upcoming Session has been added!
+// Topic: ${slot?.topic}
+// Course: ${slot?.course}
+// Date: ${slot?.day}
+// Time: ${formattedStart} - ${formattedEnd}
+
+// Please give your suitable time schedule within 3 days.
+
+// Thank you.`;
+
+//    // Send SMS to each recipient individually
+// for (const number of recipientNumber) {
+//   if (number) {
+//     await client.messages.create({
+//       body: message,
+//       from: process.env.TWILIO_PHONE_NUMBER,
+//       to: number,
+//     });
+//   }
+// }
+
+
    return NextResponse.json(slot);
   } catch (error) {
-    //console.log(error);
+    console.log(error);
     
     return NextResponse.json(
       { message: "Something Went Wrong", error },
       { status: 500 }
     );
   }
+
 };

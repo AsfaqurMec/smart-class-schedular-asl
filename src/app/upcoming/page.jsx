@@ -34,7 +34,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-    setLoading(true);
+    
     if (!selectedDate || !startTime || !endTime) {
       setError('All fields are required.');
       return;
@@ -58,7 +58,7 @@ const Page = () => {
       topic: topic,
       course: course,
     };
-
+setLoading(true);
     try {
       const res = await fetch('/addUpcomingSchedule/', {
         method: 'POST',
@@ -74,6 +74,7 @@ const Page = () => {
     } catch (err) {
       setError(err.message);
       toast.error(`Error: ${err.message}`);
+      setLoading(false);
     }
   };
 
