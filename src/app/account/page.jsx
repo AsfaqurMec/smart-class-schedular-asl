@@ -292,6 +292,15 @@ const Page = () => {
               </Link>
             </li>
           )}
+           {(session?.data?.user?.role === "mentor" || session?.data?.user?.role === "admin" ) && (
+            <li className="mb-4">
+              <Link href={"/upcoming"}>
+                <button className="flex items-center text-gray-600 hover:text-orange-500">
+                  <span className="mr-2">&#128682;</span> Add Upcoming Schedule
+                </button>
+              </Link>
+            </li>
+          )}
           {session?.data?.user?.role === "member" && (
           <li className="mb-4">
             <a href="/myclass" className="flex items-center text-gray-600 hover:text-orange-500">

@@ -30,7 +30,7 @@ const Page = () => {
 
   return (
 
-    <div className="glass flex items-center justify-center  px-4 py-5 lg:py-20 relative">
+    <div className="flex items-center justify-center  px-4 py-5 lg:py-20 relative glass bg-[#012b3a]">
       <div className="flex flex-col bg-none lg:flex-row w-full max-w-6xl rounded-sm  overflow-hidden gap-3">
 
                     {/* Left side (Register section) */}

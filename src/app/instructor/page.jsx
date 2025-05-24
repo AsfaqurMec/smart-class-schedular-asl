@@ -21,7 +21,7 @@ const page = () => {
 
 
     return (
-        <div className='relative'>
+        <div className='relative glass bg-[#012b3a]'>
              {/* Our Instructors */}
             
              <div className='py-10'>

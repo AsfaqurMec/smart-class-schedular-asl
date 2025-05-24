@@ -23,10 +23,10 @@ const [latest, setLatest] = useState([]);
 
     return (
         <>
-
+    <div className='min-h-[70vh] glass bg-[#012b3a]'>
 {latest.length > 0 ? 
             
-            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center gap-5 px-4 md:px-10 py-5 relative'>
+            <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 justify-center items-center gap-5 px-4 md:px-10 py-5 relative w-full h-full'>
               
               {latest?.map(latest => (
                     <div key={latest._id} className='space-y-3 shadow-2xl p-3 rounded-md backdrop-blur-3xl bg-[#ffffff67] flex flex-col justify-between hover:animate-pulse' >
@@ -48,7 +48,7 @@ const [latest, setLatest] = useState([]);
            :
           <h1 className="text-center text-2xl font-medium my-10">No Courses</h1>
          }
-
+</div>
         </>
     );
 };

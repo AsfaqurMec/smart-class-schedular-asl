@@ -165,7 +165,7 @@ const SignUpPage = () => {
 //console.log(process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME);
 
   return (
-    <div className="container px-2 md:px-5 lg:px-24 mx-auto py-5 relative">
+    <div className="container px-2 md:px-5 lg:px-24 mx-auto py-5 relative glass bg-[#012b3a]">
       <div className="grid grid-cols-1 gap-12 items-center justify-center w-full">
        
         <div className="w-full lg:w-[70%] mx-0 lg:mx-auto border-2 backdrop-blur-3xl glass bg-[#d2d2d275] px-3 md:px-12 py-5 border-red-400 rounded-md">
