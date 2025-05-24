@@ -10,7 +10,8 @@ import { useRouter } from "next/navigation";
 import toast from "react-hot-toast";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import axios from "axios";
+import { motion } from 'framer-motion';
 
 
 const Page = () => {
@@ -86,11 +87,6 @@ const Page = () => {
       toast.error(`Error: ${err.message}`)
     }
   };
-
-
-
-
-
 
 
 
@@ -261,6 +257,29 @@ const Page = () => {
       setLoading(false);
     }
   };
+
+const [upcoming, setUpcoming] = useState([]);
+
+  useEffect(() => {
+      const getData = async () => {
+      const { data } = await axios.get(`http://localhost:3000/getUpcomingSession`);
+
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+
+      const upcomingSessions = data.service
+        .filter(session => {
+          const sessionDate = new Date(session.day);
+          sessionDate.setHours(0, 0, 0, 0);
+          return sessionDate >= today;
+        })
+        .sort((a, b) => new Date(a.day) - new Date(b.day));
+
+      setUpcoming(upcomingSessions);
+    };
+
+    getData();
+  }, []);
 
   return (
     <>
@@ -509,7 +528,85 @@ const Page = () => {
    }
 </div>
 
+           {/* Upcoming session */}
+
+      <section>
+
+        <div className="glass min-h-screen py-10 my-5 px-4 md:px-16 relative">
+      <h1 className="text-center text-4xl font-bold mb-12">Upcoming Sessions</h1>
+
+      {upcoming.length > 0 ? (
+        <motion.div
+          initial="hidden"
+          animate="visible"
+          variants={{
+            hidden: { opacity: 0 },
+            visible: { opacity: 1, transition: { staggerChildren: 0.1 } }
+          }}
+          className="space-y-4"
+        >
+          {upcoming.map((session) => (
+            <motion.div
+              key={session._id}
+              whileHover={{ scale: 1.05 }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.1, ease: 'easeOut' }}
+              className=" rounded-2xl p-6 flex flex-col md:flex-row justify-between items-start md:items-center gap-4
+                         transition-all duration-500 ease-in-out
+                         hover:text-white hover:bg-[#d4d4d4] 
+                         glass
+                          animate-gradient-x"
+            >
+              <div className="flex items-center gap-4">
+                <div className="text-center min-w-[80px] bg-[#a8a7a7c4] py-5 rounded-lg">
+                  <p className="text-xs text-[#540808] font-semibold ">
+                    {format(new Date(session.day), 'dd MMM')}
+                  </p>
+                  <p className="text-lg font-bold text-[#020000] ">
+                  {format(new Date(`2000-01-01T${session.startTime}`), 'h:mm a')}
+                  </p>
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-1 group-hover:text-white">
+                    Topic: {session.topic}
+                  </h3>
+                  <p className="text-lg text-gray-900 group-hover:text-white">Course: {session.course}</p>
+                  <p className="text-lg text-gray-900 group-hover:text-white">
+                    Time: {format(new Date(`2000-01-01T${session.startTime}`), 'h:mm a')} -{' '}
+                    {format(new Date(`2000-01-01T${session.endTime}`), 'h:mm a')}
+                  </p>
+                  <p className="text-lg text-gray-900 group-hover:text-white">
+                    Date: {format(new Date(session.day), 'PPP')}
+                  </p>
+                </div>
+              </div>
+               
+               <Link href={`/upcoming/${session?._id}`}>
+              <motion.button
+                whileHover={{ scale: 1.05 }}
+                className="text-sm px-4 py-2 rounded-full font-medium text-white 
+                           bg-blue-600 bg-opacity-20 backdrop-blur-sm 
+                           transition-all duration-300 hover:cursor-pointer
+                           group-hover:text-white group-hover:bg-white/30"
+              >
+                Add Schedule
+              </motion.button>
+              </Link>
+            </motion.div>
+          ))}
+        </motion.div>
+      ) : (
+        <h1 className="text-center text-2xl font-medium my-10">No Upcoming Session</h1>
+      )}
+    </div>
+
+
+      </section>
+
+
       </div>
+
 
       {/* Code Verification Popup */}
       {showCodePopup && (
@@ -535,6 +632,8 @@ const Page = () => {
         </div>
       )}
     </div>
+
+
 
 </>
   );
