@@ -12,7 +12,7 @@ const Page = () => {
   const session = useSession();
   const { user } = useUser();
 
-  
+  const [loading, setLoading] = useState(false);
   const [selectedDate, setSelectedDate] = useState('');
   const [startTime, setStartTime] = useState('');
   const [endTime, setEndTime] = useState('');
@@ -34,7 +34,7 @@ const Page = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setError('');
-
+    setLoading(true);
     if (!selectedDate || !startTime || !endTime) {
       setError('All fields are required.');
       return;
@@ -65,11 +65,11 @@ const Page = () => {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(slot),
       });
-
+        
       const data = await res.json();
       if (res.ok) {
         toast.success("Upcoming Schedule added successfully!");
-        fetchData(); // refresh list
+       setLoading(false);
       }
     } catch (err) {
       setError(err.message);
@@ -88,7 +88,8 @@ const Page = () => {
       <div className="w-full mx-auto mt-10 px-6 py-4 backdrop-blur-sm bg-[#ffffff96] border-2 shadow-lg rounded-2xl space-y-4 mb-10">
         <h2 className="text-5xl font-semibold text-center mb-8">Add Upcoming Schedule</h2>
 
-        <form onSubmit={handleSubmit} className=" flex flex-col lg:flex-row gap-3 justify-center lg:items-center">
+        <form onSubmit={handleSubmit} >
+         <div className=" flex flex-col lg:flex-row gap-3 justify-center lg:items-center my-5">
           <div>
             <label className="block font-medium mb-1">Select a Date</label>
             <input
@@ -164,18 +165,21 @@ const Page = () => {
           </div>
 
 }
-
-
-  
-        </form>
-        <div className="w-full flex justify-center">
+</div>
+ <div className="w-full flex justify-center mt-5">
          <button
             type="submit"
             className="bg-blue-600 text-white px-4 py-2 text-lg rounded-md hover:bg-blue-700 transition w-72 h-11 lg:mt-4"
           >
-            Add Upcoming Schedule
+            {
+                loading ? 'Loading...' : 'Add Upcoming Schedule'
+            }
+            
           </button>
           </div>
+  
+        </form>
+       
            {error && <p className="text-red-500">{error}</p>}
       </div>
 
