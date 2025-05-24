@@ -9,7 +9,7 @@ const page = () => {
    useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` http://localhost:3000/allMentor`
+        ` https://schedular-asl.vercel.app/allMentor`
       )
       
       setMentor(data.service)

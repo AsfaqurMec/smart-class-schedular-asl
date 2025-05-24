@@ -93,7 +93,7 @@ const handleDelete = () => {
     
     const fetchData = async () => {
       try {
-        const { data } = await axios.get(`http://localhost:3000/search/api?search=${text}`);
+        const { data } = await axios.get(`https://schedular-asl.vercel.app/search/api?search=${text}`);
         setItems(data);
        // console.log('dataaaas :',items.service);
         

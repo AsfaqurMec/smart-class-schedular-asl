@@ -47,7 +47,7 @@ const [selectedCourse, setSelectedCourse] = useState('');
 
 const fetchUsers = async () => {
   try {
-    const response = await axios.get("http://localhost:3000/allUser/api/");
+    const response = await axios.get("https://schedular-asl.vercel.app/allUser/api/");
     if (response.data) {
       setLatest(response.data.service);
     }
@@ -59,7 +59,7 @@ const fetchUsers = async () => {
 useEffect(() => {
   const getData = async () => {
     const { data } = await axios.get(
-      ` http://localhost:3000/allCourse`
+      ` https://schedular-asl.vercel.app/allCourse`
     )
     
     setCourse(data.service)

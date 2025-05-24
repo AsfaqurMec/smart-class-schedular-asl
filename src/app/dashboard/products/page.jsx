@@ -16,7 +16,7 @@ const page = () => {
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` http://localhost:3000/allCourse/`
+        ` https://schedular-asl.vercel.app/allCourse/`
       )
       
       setLatest(data.service)

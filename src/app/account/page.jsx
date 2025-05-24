@@ -262,7 +262,7 @@ const [upcoming, setUpcoming] = useState([]);
 
   useEffect(() => {
       const getData = async () => {
-      const { data } = await axios.get(`http://localhost:3000/getUpcomingSession`);
+      const { data } = await axios.get(`https://schedular-asl.vercel.app/getUpcomingSession`);
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);

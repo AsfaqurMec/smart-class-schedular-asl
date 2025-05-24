@@ -29,7 +29,7 @@ const [imageUrl1, setImageUrl1] = useState('');
   useEffect(() => {
     const getData = async () => {
       const { data } = await axios.get(
-        ` http://localhost:3000/dashboard/users/api`
+        ` https://schedular-asl.vercel.app/dashboard/users/api`
       )
       
       setLatest(data.service)

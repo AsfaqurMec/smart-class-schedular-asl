@@ -23,7 +23,7 @@ const Page = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const { data } = await axios.get("http://localhost:3000/allCourse");
+      const { data } = await axios.get("https://schedular-asl.vercel.app/allCourse");
       setLatest(data.service);
     };
     getData();
@@ -144,7 +144,7 @@ setLoading(true);
               onChange={(e) => setCourse(e.target.value)}
               className="w-full border rounded-md px-3 py-2"
             >
-              <option selected >Enter Course</option>
+              <option defaultValue={''} >Enter Course</option>
               <option value={session?.data?.user?.discipline}>{session?.data?.user?.discipline}</option>
              
             </select>

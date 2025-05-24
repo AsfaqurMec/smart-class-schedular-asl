@@ -9,7 +9,7 @@ const Page = () => {
 
   useEffect(() => {
       const getData = async () => {
-      const { data } = await axios.get(`http://localhost:3000/sessions/`);
+      const { data } = await axios.get(`https://schedular-asl.vercel.app/sessions/`);
 
       const today = new Date();
       today.setHours(0, 0, 0, 0);
